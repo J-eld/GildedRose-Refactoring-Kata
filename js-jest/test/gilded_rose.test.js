@@ -80,4 +80,9 @@ describe("Conjured items tests", function() {
     const items = gildedRose.updateQuality();
     expect(items[0].quality).toBe(0);
   });
+  it("Conjured item quality should not go below 0", function() {
+    const gildedRose = new Shop([new Item("Conjured Mana Cake", 0, 1)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(0);
+  });
 });
