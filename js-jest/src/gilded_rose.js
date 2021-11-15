@@ -14,7 +14,13 @@ class Shop {
     for (let i = 0; i < this.items.length; i++) {
       if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
         if (this.items[i].quality > 0) {
-          if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
+          // if the item is a Conjured item decrease its value by 2 (double normal rate)
+          if (this.items[i].name == "Conjured Mana Cake") {
+            this.items[i].quality = this.items[i].quality - 2;
+            
+            // check if quality has gone below 0 and if so then correct to 0
+            if (this.items[i].quality < 0) this.items[i].quality = 0;
+          } else if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
             this.items[i].quality = this.items[i].quality - 1;
           }
         }
@@ -42,7 +48,13 @@ class Shop {
         if (this.items[i].name != 'Aged Brie') {
           if (this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
             if (this.items[i].quality > 0) {
-              if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
+              // if the item's quality is less than 0 and is a Conjured item decrease its value by 2 (double normal rate)
+              if (this.items[i].name == "Conjured Mana Cake") {
+                this.items[i].quality = this.items[i].quality - 2;
+
+                // check if quality has gone below 0 and if so then correct to 0
+                if (this.items[i].quality < 0) this.items[i].quality = 0;
+              } else if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
                 this.items[i].quality = this.items[i].quality - 1;
               }
             }
