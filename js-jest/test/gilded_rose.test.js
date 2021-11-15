@@ -49,6 +49,12 @@ describe("Sulfuras tests", function() {
     expect(items[0].quality).toBe(80);
     expect(items[0].sellIn).toBe(1)
   });
+  it("quality and sellIn should not change if sellIn is below 0", function() {
+    const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", -1, 80)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(80);
+    expect(items[0].sellIn).toBe(-1)
+  });
 });
 
 describe("Backstage passes tests", function() {
